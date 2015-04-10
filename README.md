@@ -1,2 +1,2 @@
-# lunch-reviews
+# Lunch Reviews
 What's for lunch?  
