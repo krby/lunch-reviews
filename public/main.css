@@ -8,21 +8,21 @@ body {
   width: 400px;
 }
 
-#message-form {
+#text-form {
   border-bottom: 1px solid black;
   padding-bottom: 20px;
 }
 
-#message-form button[type="submit"] {
+#text-form button[type="submit"] {
   margin-top: 10px;
 }
 
-#message-form input[type="checkbox"] {
+#text-form input[type="checkbox"] {
   margin-top: 5px;
 }
 
 
-#message-form #message-body {
+#text-form #text-body {
   height: 100px;
   width: 100%;
   border-color: rgb(169, 169, 169);
@@ -30,41 +30,16 @@ body {
   border-width: 1px;
 }
 
-.message-body {
+.text-body {
   margin-bottom: 20px;
   margin-top: 10px;
   word-wrap: break-word;
 }
 
-.message-list .message-timestamp {
+.text-list .text-timestamp {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 10px;
   margin-top: 5px;
   text-align: right;
-}
-
-/*display message title*/
-.message-title { 
-  border-bottom: 1px solid rgb(128, 128, 128);
-  font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.message-info {
-  font-size: 12px;
-  font-style: normal;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.spanFormat {
-  display: inline-block;
-}
-
-.styled-select {
-  background: inherit;
 }

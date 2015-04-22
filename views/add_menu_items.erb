@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Page</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <a href = "/" >Main Page</a>
+    
+    <div id="page">
+      <h1>Lunch</h1>
+      <h2>Add menu items!</h2>
+      <form id="text-form" method="POST" action="/add_menu_item">
+        <input type="text" id="menu_item_name" name="name" placeholder="Name of Menu Item"></input>
+        <textarea id="text-body" name="description" placeholder="Description of Menu Item"></textarea>
+        
+        <br>
+        <button type="submit">Add item</button>
+      </form>
+      
+      <% if menu_items.empty? %>
+        <h2>Sorry, no menu items. :(</h2>
+      <% else %>
+        <h2>Menu Items</h2>
+        <ol class="text-list">
+          <% menu_items.each do |menu_item| %>
+            <li>
+              <div class="item-name">
+                  <%= menu_item.name %>
+              </div>
+              <div class="text-body">
+                <%= menu_item.description %>
+              </div>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+      
+    </div>
+  </body>
+</html>
