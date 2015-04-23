@@ -22,7 +22,7 @@ body {
 }
 
 
-#text-form #text-body {
+#text-form #description-body {
   height: 100px;
   width: 100%;
   border-color: rgb(169, 169, 169);
@@ -42,4 +42,13 @@ body {
   margin-bottom: 10px;
   margin-top: 5px;
   text-align: right;
+}
+
+/*display menu item name*/
+.item-name { 
+  border-bottom: 1px solid rgb(128, 128, 128);
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: left;
 }
