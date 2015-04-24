@@ -4,18 +4,8 @@ require "data_mapper"
 require "./database_setup"
 
 helpers do
-	
 end
 
-class User
-	include DataMapper::Resource
-	
-	property :id,           Serial
-	property :email,        String, required: true, unique: true
-	property :password,     BCryptHash
-	
-	has n, :reviews
-end
 
 # the actual lunch item of the day
 class Lunch 
@@ -55,6 +45,7 @@ end
 
 
 
+
 class Review
 	include DataMapper::Resource
 	
@@ -68,13 +59,25 @@ class Review
 	belongs_to :user, :menu_item
 end
 
+class User
+	include DataMapper::Resource
+	
+	property :id,           Serial
+	property :email,        String, required: true, unique: true
+	property :password,     BCryptHash
+	
+	has n, :reviews
+end
+
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 get("/") do
-  erb(:index)
+  erb(:main_page)
 end
 
+
+# Add menu items into database. 
 get("/add_menu_items") do
 	list = MenuItem.all(order: :name.asc)
 	erb(:add_menu_items, locals: { menu_items: list })
@@ -92,6 +95,22 @@ post("/add_menu_item") do
   if menu_item.saved?
     redirect("/")
   else
-		erb(:add_menu_items, locals: { menu_items: list })
+		erb(:add_menu_items, locasls: { menu_items: list })
   end
+end
+
+
+# Set the lunch. Enter in what the lunch is. 
+get("/set_lunch") do
+	list = MenuItem.all(order: :name.asc)
+	erb(:set_lunch, locals: {menu_items: list})
+end
+
+post("/set_lunch") do
+	
+	
+	lunch = Lunch.create(
+		date:
+			
+	)
 end
