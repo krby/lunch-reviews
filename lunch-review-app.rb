@@ -95,7 +95,7 @@ post("/add_menu_item") do
   if menu_item.saved?
     redirect("/")
   else
-		erb(:add_menu_items, locasls: { menu_items: list })
+		erb(:add_menu_items, locals: { menu_items: list })
   end
 end
 
@@ -107,10 +107,20 @@ get("/set_lunch") do
 end
 
 post("/set_lunch") do
-	
+	puts "#############"
+	puts "#############"
+	p params["menu_item_id"]
+	gg = params["menu_item_id"]
+	mItem = MenuItem.get(gg)
+	puts mItem.name
 	
 	lunch = Lunch.create(
-		date:
-			
+		
 	)
+	
+	if lunch.saved?
+  	redirect("/")
+  else
+		erb(:error)
+	end
 end
