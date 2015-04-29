@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "sinatra"
 gem "data_mapper"
 gem "bcrypt"
+gem "rake"
 
 group :development do
   # We use SQLite3 on our local machines
