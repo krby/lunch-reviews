@@ -4,10 +4,17 @@ class Lunch
 	
 	property :id,       Serial
 	property :date,     Date, required: true # the date that the item is lunch
-	# property :name,     String, required: true
-	
+
 	has n, :lunch_menu_items
 	has n, :menu_items, through: :lunch_menu_items
+	
+  def add_menu_item_ids(menu_item_ids)
+    if menu_item_ids
+      menu_item_ids.each do |menu_item_id|
+        self.menu_items << MenuItem.get(menu_item_id)
+      end
+    end
+  end
 end
 
 # Pairs lunch (date specific) and menu items
@@ -32,7 +39,6 @@ class MenuItem
 	has n, :review
 	has n, :lunch_menu_items
 	has n, :lunches, through: :lunch_menu_items
-
 end
 
 class Review
@@ -52,9 +58,29 @@ class User
 	include DataMapper::Resource
 	
 	property :id,           Serial
-	property :email,        String, required: true, unique: true
-	property :password,     BCryptHash
-	
+
+  property :email, String,
+    :format   => :email_address,
+    :required => true,
+    :unique   => true,
+    :messages => {
+      :format => "You must enter a valid email address."
+    }
+  property :password, BCryptHash, :required => true
+  validates_confirmation_of :password
+  
+  attr_accessor :password_confirmation
+  validates_length_of :password_confirmation, :min => 6
+  
+  
+  def valid_password?(unhashed_password)
+    self.password == unhashed_password
+  end
+  
+  def self.find_by_email(email)
+    self.first(:email => email)
+  end
+  
 	has n, :reviews
 end
 

@@ -4,12 +4,77 @@ require "data_mapper"
 require "./environment"
 
 helpers do
+  def current_user
+    # Return nil if no user is logged in
+    return nil unless session.key?(:user_id)
+
+    # If @current_user is undefined, define it by
+    # fetching it from the database.
+    @current_user ||= User.get(session[:user_id])
+  end
+
+  def user_signed_in?
+    # A user is signed in if the current_user method
+    # returns something other than nil
+    !current_user.nil?
+  end
+
+  def sign_in!(user)
+    session[:user_id] = user.id
+    @current_user = user
+  end
+
+  def sign_out!
+    @current_user = nil
+    session.delete(:user_id)
+  end
 end
+
+set(:sessions, true)
+set(:session_secret, ENV["SESSION_SECRET"])
 
 get("/") do
-  erb(:main_page, { locals: {lunch: Lunch.last}})
+	users = User.all
+  erb(:main_page, :locals => {:lunch => Lunch.last, :users => users})
 end
 
+get("/users/new") do
+  user = User.new
+  erb(:users_new, :locals => { :user => user })
+end
+
+post("/users") do
+  user = User.create(params[:user])
+
+  if user.saved?
+    sign_in!(user)
+
+    redirect("/")
+  else
+    erb(:users_new, :locals => { :user => user })
+  end
+end
+
+get("/sessions/new") do
+  user = User.new
+  erb(:sessions_new, :locals => { :user => user })
+end
+
+post("/sessions") do
+  user = User.find_by_email(params[:email])
+
+  if user && user.valid_password?(params[:password])
+    sign_in!(user)
+    redirect("/")
+  else
+    erb(:sessions_new, :locals => { :user => user })
+  end
+end
+
+get("/sessions/sign_out") do
+  sign_out!
+  redirect("/")
+end
 
 # Add menu items into database. 
 get("/add_menu_items") do
@@ -41,20 +106,10 @@ get("/set_lunch") do
 end
 
 post("/set_lunch") do
-	puts "#############"
-	puts "#############"
-	p params["menu_item_id"]
-	stuff = params["menu_item_id"]
-	mItem = MenuItem.get(stuff)
-	puts mItem.name
-	puts mItem.description
-	puts params["date"]
-	lunch = Lunch.new(
-		date: 			params["date"]
-	)
-	lunch.menu_items << mItem
-	lunch.save()
-	if lunch.saved?
+  lunch = Lunch.new(date: params["date"])
+  lunch.add_menu_item_ids(params["menu_item_ids"])
+  
+	if lunch.save
   	redirect("/")
   else
 		erb(:error)
