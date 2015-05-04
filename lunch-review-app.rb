@@ -107,6 +107,7 @@ end
 
 post("/set_lunch") do
   lunch = Lunch.new(date: params["date"])
+  #.add_menu_item_ids method is added in the Lunch class in models.rb
   lunch.add_menu_item_ids(params["menu_item_ids"])
   
 	if lunch.save

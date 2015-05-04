@@ -12,18 +12,21 @@
     <div id="page">
       <h1>Lunch of the Day</h1>
       <%= lunch.date %>
-       <ol class="text-list">
+       <ul class="text-list">
         <% lunch.menu_items.each do |menu_item| %>
          <li>
           <div class="item-name">
           <%= menu_item.name %>
-           </div>
+          </div>
           <div class="text-body">
-         <%= menu_item.description %>
-        </div>
+          <%= menu_item.description %>
+          </div>
+          <div class="text-body">
+          <input type="text" name="lunch_comment"
+          </div>
         </li>
        <% end %>
-      </ol>
+      </ul>
       <h3>Users</h3>
     <% if user_signed_in? %>
       <p>

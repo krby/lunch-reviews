@@ -4,8 +4,24 @@ body {
 }
 
 #page {
-  margin: 20px auto;
-  width: 400px;
+  margin: 0px auto;
+  width: 800px;
+}
+
+#site-header {
+  border-color: black;
+  border-style: solid;
+  border-width: 0px 1px 1px 1px;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#site-header nav .nav-links {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 #text-form {

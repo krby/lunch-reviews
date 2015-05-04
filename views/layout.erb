@@ -12,7 +12,7 @@
       <header id="site-header">
         <h1><a href="/">Main Page</a></h1>
         <nav>
-          <ol class="nav-links">
+          <ul class="nav-links">
             <% if user_signed_in? %>
               <li>
                 <a href="/sessions/sign_out">Sign Out</a>
@@ -29,7 +29,7 @@
                 <a href="/users/new">Create Account</a>
               </li>
             <% end %>
-          </ol>
+          </ul>
         </nav>
       </header>
       <div id="main-content">
