@@ -11,6 +11,45 @@
     <a href = "/add_menu_items" >Admin</a>
     <div id="page">
       <h1>Lunch of the Day</h1>
+      <%= lunch.date %>
+       <ol class="text-list">
+        <% lunch.menu_items.each do |menu_item| %>
+         <li>
+          <div class="item-name">
+          <%= menu_item.name %>
+           </div>
+          <div class="text-body">
+         <%= menu_item.description %>
+        </div>
+        </li>
+       <% end %>
+      </ol>
+      <h3>Users</h3>
+    <% if user_signed_in? %>
+      <p>
+        It looks like you're signed in.  Congrats! You can
+        <a href="/sessions/sign_out">sign out</a> at any time.
+      </p>
+    <% else %>
+       <p>
+        It doesn't look like you're signed in.  You should
+         <a href="/users/new">create an account</a> or
+        <a href="/sessions/new">sign into your existing account</a>.
+      </p>
+    <% end %>
+    <% if users.empty? %>
+      <p>
+        Nobody's signed up yet!  Why don't you
+        <a href="/users/new">create an account</a>?
+      </p>
+    <% else %>
+      <ul>
+        <% users.each do |user| %>
+        <li><%= user.email %></li>
+       <% end %>
+      </ul>
+    <% end %>
+  
     </div>
   </body>
 </html>

@@ -1,81 +1,80 @@
 require "sinatra"
 require "data_mapper"
 
-require "./database_setup"
+require "./environment"
 
 helpers do
+  def current_user
+    # Return nil if no user is logged in
+    return nil unless session.key?(:user_id)
+
+    # If @current_user is undefined, define it by
+    # fetching it from the database.
+    @current_user ||= User.get(session[:user_id])
+  end
+
+  def user_signed_in?
+    # A user is signed in if the current_user method
+    # returns something other than nil
+    !current_user.nil?
+  end
+
+  def sign_in!(user)
+    session[:user_id] = user.id
+    @current_user = user
+  end
+
+  def sign_out!
+    @current_user = nil
+    session.delete(:user_id)
+  end
 end
 
-
-# the actual lunch item of the day
-class Lunch 
-	include DataMapper::Resource
-	
-	property :id,       Serial
-	property :date,     Date, required: true # the date that the item is lunch
-	# property :name,     String, required: true
-	
-	has n, :lunch_menu_items
-	has n, :menu_items, through: :lunch_menu_items
-end
-
-# Pairs lunch (date specific) and menu items
-# Allows for the many-many relationship
-class LunchMenuItem
-	include DataMapper::Resource
-
-	property :id, Serial
-	
-	belongs_to :menu_item
-	belongs_to :lunch
-end
-
-class MenuItem 
-	include DataMapper::Resource
-	
-	property :id,								Serial
-	property :name,							String, required: true # name of the menu item
-	property :description,			Text, required: true
-
-	
-	has n, :review
-	has n, :lunch_menu_items
-	has n, :lunches, through: :lunch_menu_items
-end
-
-
-
-
-class Review
-	include DataMapper::Resource
-	
-	property :id,               Serial 
-	property :body,             Text, required: true
-	property :created_at,       DateTime, required: true
-	property :likes,            Integer, default: 0
-	property :stars,            Integer, required: true
-	property :summary,          String
-	
-	belongs_to :user, :menu_item
-end
-
-class User
-	include DataMapper::Resource
-	
-	property :id,           Serial
-	property :email,        String, required: true, unique: true
-	property :password,     BCryptHash
-	
-	has n, :reviews
-end
-
-DataMapper.finalize
-DataMapper.auto_upgrade!
+set(:sessions, true)
+set(:session_secret, ENV["SESSION_SECRET"])
 
 get("/") do
-  erb(:main_page)
+	users = User.all
+  erb(:main_page, :locals => {:lunch => Lunch.last, :users => users})
 end
 
+get("/users/new") do
+  user = User.new
+  erb(:users_new, :locals => { :user => user })
+end
+
+post("/users") do
+  user = User.create(params[:user])
+
+  if user.saved?
+    sign_in!(user)
+
+    redirect("/")
+  else
+    erb(:users_new, :locals => { :user => user })
+  end
+end
+
+get("/sessions/new") do
+  user = User.new
+  erb(:sessions_new, :locals => { :user => user })
+end
+
+post("/sessions") do
+  user = User.find_by_email(params[:email])
+
+  if user && user.valid_password?(params[:password])
+    sign_in!(user)
+    redirect("/")
+  else
+    erb(:sessions_new, :locals => { :user => user })
+  end
+end
+
+get("/sessions/sign_out") do
+  sign_out!
+  redirect("/")
+end
 
 # Add menu items into database. 
 get("/add_menu_items") do
@@ -107,18 +106,10 @@ get("/set_lunch") do
 end
 
 post("/set_lunch") do
-	puts "#############"
-	puts "#############"
-	p params["menu_item_id"]
-	gg = params["menu_item_id"]
-	mItem = MenuItem.get(gg)
-	puts mItem.name
-	
-	lunch = Lunch.create(
-		
-	)
-	
-	if lunch.saved?
+  lunch = Lunch.new(date: params["date"])
+  lunch.add_menu_item_ids(params["menu_item_ids"])
+  
+	if lunch.save
   	redirect("/")
   else
 		erb(:error)
