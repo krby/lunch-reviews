@@ -8,6 +8,31 @@ body {
   width: 800px;
 }
 
+<<<<<<< HEAD
+=======
+#text-form {
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+#text-form button[type="submit"] {
+  margin-top: 10px;
+}
+
+#text-form input[type="checkbox"] {
+  margin-top: 5px;
+}
+
+
+#text-form #description-body {
+  height: 100px;
+  width: 100%;
+  border-color: rgb(169, 169, 169);
+  border-style: solid;
+  border-width: 1px;
+}
+
+>>>>>>> 75c81ef6ec8b3044c1f4fcde19f59379b7342070
 #site-header {
   border-color: black;
   border-style: solid;
@@ -68,3 +93,9 @@ body {
   margin-top: 10px;
   text-align: left;
 }
+
+
+
+
+
+

@@ -17,7 +17,7 @@
       <form method="POST" action="/set_lunch">
         <button type="submit">Set lunch</button>
         <br><br>
-        Date: <input type="date" name="date">
+        Date: <input type="date" name="date" placeholder="mm/dd/yyyy">
         <% if menu_items.empty? %>
           <h2>Sorry, no menu items. :(</h2>
         <% else %>
