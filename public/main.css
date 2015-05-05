@@ -8,8 +8,6 @@ body {
   width: 800px;
 }
 
-<<<<<<< HEAD
-=======
 #text-form {
   border-bottom: 1px solid black;
   padding-bottom: 20px;
@@ -32,7 +30,6 @@ body {
   border-width: 1px;
 }
 
->>>>>>> 75c81ef6ec8b3044c1f4fcde19f59379b7342070
 #site-header {
   border-color: black;
   border-style: solid;
