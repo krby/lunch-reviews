@@ -107,6 +107,7 @@ end
 
 post("/set_lunch") do
   lunch = Lunch.new(date: params["date"])
+  
   #.add_menu_item_ids method is added in the Lunch class in models.rb
   lunch.add_menu_item_ids(params["menu_item_ids"])
   
@@ -115,4 +116,31 @@ post("/set_lunch") do
   else
 		erb(:error)
 	end
+end
+
+
+# Rate a MenuItem
+post("/review/:menu_item_id") do
+  rating = params["lunch_rating"].to_i
+  review_time = DateTime.now
+  puts "=========="
+  puts rating
+  puts rating.class.name
+  
+  review = Review.new(
+  	rating: 					rating,
+  	created_at: 			review_time
+  )
+  MenuItem.get(params["menu_item_id"].to_i).reviews << review
+
+	if review.save
+		redirect("/")
+	else
+		puts "something went horribly wrong"
+		review.errors.each do |e|
+			print e
+		end
+		erb(:error)
+	end
+  
 end

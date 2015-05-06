@@ -18,11 +18,17 @@
           <div class="item-name">
           <%= menu_item.name %>
           </div>
+          <div class ="rating">
+          Rating: <%= menu_item.avg_rating %>
+          </div>
           <div class="text-body">
           <%= menu_item.description %>
           </div>
-          <div class="text-body">
-          <input type="text" name="lunch_comment"
+          <div class="rating">
+            <form method="POST" action="/review/<%= menu_item.id %>">
+              <input type="number" name="lunch_rating" min="1" max="10">
+              <button type="submit">Submit Rating</button>
+            </form>
           </div>
         </li>
        <% end %>
@@ -30,7 +36,7 @@
       <h3>Users</h3>
     <% if user_signed_in? %>
       <p>
-        It looks like you're signed in.  Congrats! You can
+        It looks like you're signed in. Congrats! You can
         <a href="/sessions/sign_out">sign out</a> at any time.
       </p>
     <% else %>

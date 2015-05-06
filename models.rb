@@ -34,24 +34,24 @@ class MenuItem
 	property :id,								Serial
 	property :name,							String, required: true # name of the menu item
 	property :description,			Text, required: true
-
 	
-	has n, :review
+	has n, :reviews
 	has n, :lunch_menu_items
 	has n, :lunches, through: :lunch_menu_items
+	
+	def avg_rating
+	  self.reviews.avg(:rating)
+	end
 end
 
 class Review
 	include DataMapper::Resource
 	
 	property :id,               Serial 
-	property :body,             Text, required: true
 	property :created_at,       DateTime, required: true
-	property :likes,            Integer, default: 0
-	property :stars,            Integer, required: true
-	property :summary,          String
-	
-	belongs_to :user, :menu_item
+	property :rating,           Integer, default: 0, required: true
+
+	belongs_to :menu_item
 end
 
 class User
@@ -81,7 +81,6 @@ class User
     self.first(:email => email)
   end
   
-	has n, :reviews
 end
 
 DataMapper.finalize
