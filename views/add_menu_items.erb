@@ -24,11 +24,13 @@
       <% if menu_items.empty? %>
         <h2>Sorry, no menu items. :(</h2>
       <% else %>
-        <h2>Menu Items</h2>
+        <h2>Menu Items List and Deletion!</h2>
         <ol class="text-list">
+          <form id ="delete" method="POST" action="/delete_menu_item">
           <% menu_items.each do |menu_item| %>
             <li>
               <div class="item-name">
+                  <input type="checkbox" name="delete_menu_item_ids[]" value="<% menu_item.id %>">
                   <%= menu_item.name %>
               </div>
               <div class="text-body">
@@ -36,6 +38,8 @@
               </div>
             </li>
           <% end %>
+          <button type ="submit">Delete Menu Item</button>
+          </form>
         </ol>
       <% end %>
       

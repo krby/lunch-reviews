@@ -15,20 +15,27 @@
   <form id="create-account-form" class="horizontal-form"
         method="POST" action="/users">
 
+    <div>
+      
     <label for="user-email">Email</label>
 
     <input id="user-email" type="text" name="user[email]"
            placeholder="you@example.com" value="<%= user.email %>">
-
+      
+    </div>
+    
+    <div>
     <label for="user-password">Password</label>
 
     <input id="user-password" type="password" name="user[password]">
-
+    </div>
+    
+    <div>
     <label for="user-password-confirm">Confirm Password</label>
 
     <input id="user-password-confirm" type="password"
            name="user[password_confirmation]">
-
+    </div>
 
     <button type="submit">Create Account</button>
   </form>
