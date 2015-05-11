@@ -17,7 +17,6 @@
     <% else %>
       <h2>Menu Items List and Deletion!</h2>
       <ol class="text-list">
-        <form id ="delete" method="POST" action="/delete_menu_item">
         <% menu_items.each do |menu_item| %>
           <li>
             <div class="item-name">
@@ -27,10 +26,12 @@
             <div class="text-body">
               <%= menu_item.description %>
             </div>
+            <form method="POST" action="/delete_menu_item/<%= menu_item.id %>">
+              <button type ="submit">Delete Menu Item</button>
+            </form>
           </li>
         <% end %>
-        <button type ="submit">Delete Menu Item</button>
-        </form>
+
       </ol>
     <% end %>
   </div>
