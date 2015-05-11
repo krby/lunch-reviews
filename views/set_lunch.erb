@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Admin Page</title>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-  </head>
-  <body>
-    <a href = "/" >Main Page</a>
+<article id="set-lunch">
+  <a href = "/" >Main Page</a>
+  
+  <div id="page">
+    <h1>Lunch</h1>
+    <h2 style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
     
-    <div id="page">
-      <h1>Lunch</h1>
-      <h2 style="border-bottom: 1px solid black;">What's the lunch today?</h2>
-      
-      <form method="POST" action="/set_lunch">
-        <button type="submit">Set lunch</button>
-        <br><br>
-        Date: <input type="date" name="date" placeholder="mm/dd/yyyy">
-        <% if menu_items.empty? %>
-          <h2>Sorry, no menu items. :(</h2>
-        <% else %>
-          <h2>Menu Items</h2>
-          <ol class="text-list">
-            <% menu_items.each do |menu_item| %>
-              <li>
-                <div class="item-name">
-                    <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
-                    <%= menu_item.name %>
-                </div>
-                <div class="text-body">
-                  <%= menu_item.description %>
-                </div>
-              </li>
-            <% end %>
-          </ol>
-        <% end %>
-      </form>
-      
-    </div>
-  </body>
-</html>
+    <form method="POST" action="/set_lunch">
+      <button type="submit">Set lunch</button>
+      <br><br>
+      Date: <input type="date" name="date" placeholder:"mm/dd/yy">
+      <% if menu_items.empty? %>
+        <h2>Sorry, no menu items. :(</h2>
+      <% else %>
+        <h2>Menu Items</h2>
+        <ol class="text-list">
+          <% menu_items.each do |menu_item| %>
+            <li>
+              <div class="item-name">
+                  <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
+                  <%= menu_item.name %>
+              </div>
+              <div class="text-body">
+                <%= menu_item.description %>
+              </div>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </form>
+  </div>
+</article>

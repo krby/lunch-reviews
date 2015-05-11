@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Lunch</title>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-  </head>
-  <body>
-    <a href = "/add_menu_items" >Admin</a>
-    <div id="page">
+<article id="main-page">
+  <a href = "/add_menu_items" >Admin</a>
+  <div id="page">
+    <% if lunch.menu_items.empty? %>
+        <h2>Sorry, no menu items. :(</h2>
+    <% else %>
       <h1>Lunch of the Day</h1>
       <%= lunch.date %>
        <ul class="text-list">
@@ -33,7 +27,8 @@
         </li>
        <% end %>
       </ul>
-      <h3>Users</h3>
+    <% end %>
+    <h3>Users</h3>
     <% if user_signed_in? %>
       <p>
         It looks like you're signed in. Congrats! You can
@@ -58,7 +53,5 @@
        <% end %>
       </ul>
     <% end %>
-  
-    </div>
-  </body>
-</html>
+  </div>
+</article>
