@@ -94,9 +94,9 @@ post("/add_menu_item") do
   )
  
   if menu_item.saved?
-    redirect("/")
+    redirect("/add_menu_items")
   else
-		erb(:add_menu_items, locals: { menu_items: list })
+		erb(:error)
   end
 end
 
@@ -106,7 +106,7 @@ post("/delete_menu_item/:menu_item_id") do
   menu_item.destroy
   
   if menu_item.destroyed?
-    redirect("/")
+    redirect("/add_menu_items")
   else
 		erb(:error)
   end
