@@ -13,6 +13,9 @@
     <div id="page">
       <h1>Lunch</h1>
       <h2>Add menu items!</h2>
+     
+<!--##########################################################-->
+
       <form id="text-form" method="POST" action="/add_menu_item">
         <input type="text" name="name" placeholder="Name of Menu Item"></input>
         <textarea id="description-body" name="description" placeholder="Description of Menu Item"></textarea>
@@ -20,13 +23,14 @@
         <br>
         <button type="submit">Add item</button>
       </form>
-      
       <% if menu_items.empty? %>
         <h2>Sorry, no menu items. :(</h2>
       <% else %>
         <h2>Menu Items List and Deletion!</h2>
         <ol class="text-list">
-          <form id ="delete" method="POST" action="/delete_menu_item">
+          
+<!--##########################################################-->
+          <form method="POST" action="/delete_menu_item">
           <% menu_items.each do |menu_item| %>
             <li>
               <div class="item-name">
@@ -40,6 +44,8 @@
           <% end %>
           <button type ="submit">Delete Menu Item</button>
           </form>
+<!--##########################################################-->          
+
         </ol>
       <% end %>
       

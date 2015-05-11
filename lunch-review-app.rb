@@ -98,6 +98,16 @@ post("/add_menu_item") do
   end
 end
 
+post("/delete_menu_item") do
+	delete_menu_id = params["delete_menu_item_ids"]
+	
+	p puts "#####################"
+	p puts delete_menu_id
+	
+	redirect("/add_menu_items")
+end
+	
+
 
 # Set the lunch. Enter in what the lunch is. 
 get("/set_lunch") do
@@ -105,7 +115,9 @@ get("/set_lunch") do
 	erb(:set_lunch, locals: {menu_items: list})
 end
 
+
 post("/set_lunch") do
+	
   lunch = Lunch.new(date: params["date"])
   
   #.add_menu_item_ids method is added in the Lunch class in models.rb
