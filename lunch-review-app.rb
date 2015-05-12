@@ -77,14 +77,16 @@ get("/sessions/sign_out") do
 end
 
 
+
+
 # LUNCH REVIEW specific (non user-auth)
 # Add menu items into database. 
-get("/add_menu_items") do
+get("/admin/add_menu_items") do
 	list = MenuItem.all(order: :name.asc)
 	erb(:add_menu_items, locals: { menu_items: list })
 end
 
-post("/add_menu_item") do
+post("/admin/add_menu_item") do
   menu_item_name = params["name"]
   menu_item_desc = params["description"]
   
@@ -94,45 +96,40 @@ post("/add_menu_item") do
   )
  
   if menu_item.saved?
-    redirect("/add_menu_items")
+    redirect("/admin/add_menu_items")
   else
 		erb(:error)
   end
 end
 
-<<<<<<< HEAD
-post("/delete_menu_item") do
+post("/admin/delete_menu_item") do
 	delete_menu_id = params["delete_menu_item_ids"]
 	
 	p puts "#####################"
 	p puts delete_menu_id
 	
-	redirect("/add_menu_items")
+	redirect("/admin/add_menu_items")
 end
-	
 
-=======
 # delete menu item 
-post("/delete_menu_item/:menu_item_id") do
+post("/admin/delete_menu_item/:menu_item_id") do
   menu_item = MenuItem.get(params["menu_item_id"])
   menu_item.destroy
   
   if menu_item.destroyed?
-    redirect("/add_menu_items")
+    redirect("/admin/add_menu_items")
   else
 		erb(:error)
   end
 end
->>>>>>> 63ec98e1a4e8f94cdd79535bdc27bec6150e705b
 
 # Set the lunch. Enter in what the lunch is. 
-get("/set_lunch") do
+get("/admin/set_lunch") do
 	list = MenuItem.all(order: :name.asc)
 	erb(:set_lunch, locals: {menu_items: list})
 end
 
-
-post("/set_lunch") do
+post("/admin/set_lunch") do
 	
   lunch = Lunch.new(date: params["date"])
   
@@ -148,7 +145,7 @@ end
 
 # Rate a MenuItem
 post("/review/:menu_item_id") do
-  rating = params["lunch_rating"]
+  rating = params["lunch_rating"].to_i
   review_time = DateTime.now
   puts "=========="
   puts rating
@@ -169,5 +166,4 @@ post("/review/:menu_item_id") do
 		end
 		erb(:error)
 	end
-  
 end
