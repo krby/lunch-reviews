@@ -1,10 +1,10 @@
 <article id="add-menu-items">
   <a href = "/" >Main Page</a>
-  <a href = "/set_lunch" >Add Lunch</a>
+  <a href = "/admin/set_lunch" >Add Lunch</a>
   <div id="page">
     <h1>Lunch</h1>
     <h2>Add menu items!</h2>
-    <form id="text-form" method="POST" action="/add_menu_item">
+    <form id="text-form" method="POST" action="/admin/add_menu_item">
       <input type="text" name="name" placeholder="Name of Menu Item"></input>
       <textarea id="description-body" name="description" placeholder="Description of Menu Item"></textarea>
       <br>
@@ -25,7 +25,7 @@
             <div class="text-body">
               <%= menu_item.description %>
             </div>
-            <form method="POST" action="/delete_menu_item/<%= menu_item.id %>">
+            <form method="POST" action="/admin/delete_menu_item/<%= menu_item.id %>">
               <button type ="submit">Delete Menu Item</button>
             </form>
           </li>
