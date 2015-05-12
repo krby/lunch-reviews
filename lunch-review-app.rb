@@ -77,6 +77,8 @@ get("/sessions/sign_out") do
 end
 
 
+
+
 # LUNCH REVIEW specific (non user-auth)
 # Add menu items into database. 
 get("/add_menu_items") do
@@ -100,7 +102,6 @@ post("/add_menu_item") do
   end
 end
 
-<<<<<<< HEAD
 post("/delete_menu_item") do
 	delete_menu_id = params["delete_menu_item_ids"]
 	
@@ -109,9 +110,7 @@ post("/delete_menu_item") do
 	
 	redirect("/add_menu_items")
 end
-	
 
-=======
 # delete menu item 
 post("/delete_menu_item/:menu_item_id") do
   menu_item = MenuItem.get(params["menu_item_id"])
@@ -123,14 +122,12 @@ post("/delete_menu_item/:menu_item_id") do
 		erb(:error)
   end
 end
->>>>>>> 63ec98e1a4e8f94cdd79535bdc27bec6150e705b
 
 # Set the lunch. Enter in what the lunch is. 
 get("/set_lunch") do
 	list = MenuItem.all(order: :name.asc)
 	erb(:set_lunch, locals: {menu_items: list})
 end
-
 
 post("/set_lunch") do
 	
@@ -148,7 +145,7 @@ end
 
 # Rate a MenuItem
 post("/review/:menu_item_id") do
-  rating = params["lunch_rating"]
+  rating = params["lunch_rating"].to_i
   review_time = DateTime.now
   puts "=========="
   puts rating
@@ -169,5 +166,4 @@ post("/review/:menu_item_id") do
 		end
 		erb(:error)
 	end
-  
 end

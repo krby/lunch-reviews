@@ -1,55 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Admin Page</title>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-  </head>
-  <body>
-    <a href = "/" >Main Page</a>
-    <a href = "/set_lunch" >Add Lunch</a>
-    <div id="page">
-      <h1>Lunch</h1>
-      <h2>Add menu items!</h2>
-     
-<!--##########################################################-->
-
-      <form id="text-form" method="POST" action="/add_menu_item">
-        <input type="text" name="name" placeholder="Name of Menu Item"></input>
-        <textarea id="description-body" name="description" placeholder="Description of Menu Item"></textarea>
-        
-        <br>
-        <button type="submit">Add item</button>
-      </form>
-      <% if menu_items.empty? %>
-        <h2>Sorry, no menu items. :(</h2>
-      <% else %>
-        <h2>Menu Items List and Deletion!</h2>
-        <ol class="text-list">
-          
-<!--##########################################################-->
-          <form method="POST" action="/delete_menu_item">
-          <% menu_items.each do |menu_item| %>
-            <li>
-              <div class="item-name">
-                  <input type="checkbox" name="delete_menu_item_ids[]" value="<% menu_item.id %>">
-                  <%= menu_item.name %>
-              </div>
-              <div class="text-body">
-                <%= menu_item.description %>
-              </div>
-            </li>
-          <% end %>
-          <button type ="submit">Delete Menu Item</button>
-          </form>
-<!--##########################################################-->          
-
-        </ol>
-      <% end %>
-=======
 <article id="add-menu-items">
   <a href = "/" >Main Page</a>
   <a href = "/set_lunch" >Add Lunch</a>
@@ -59,8 +7,6 @@
     <form id="text-form" method="POST" action="/add_menu_item">
       <input type="text" name="name" placeholder="Name of Menu Item"></input>
       <textarea id="description-body" name="description" placeholder="Description of Menu Item"></textarea>
->>>>>>> 63ec98e1a4e8f94cdd79535bdc27bec6150e705b
-      
       <br>
       <button type="submit">Add item</button>
     </form>
@@ -84,7 +30,6 @@
             </form>
           </li>
         <% end %>
-
       </ol>
     <% end %>
   </div>
