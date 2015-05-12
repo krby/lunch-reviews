@@ -1,5 +1,5 @@
 <article id="main-page">
-  <a href = "/add_menu_items" >Admin</a>
+  <a href = "/admin/add_menu_items">Admin</a>
   <div id="page">
     <% if lunch.menu_items.empty? %>
         <h2>Sorry, no menu items. :(</h2>
@@ -19,7 +19,7 @@
           <%= menu_item.description %>
           </div>
           <div class="rating">
-            <form method="POST" action="/review/<%= menu_item.id %>">
+            <form method="POST" action="/admin/review/<%= menu_item.id %>">
               <input type="number" name="lunch_rating" min="1" max="10">
               <button type="submit">Submit Rating</button>
             </form>
