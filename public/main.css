@@ -3,10 +3,19 @@ body {
 }
 
 #page {
-  margin: 0px auto;
-  width: 800px;
+  width: 66%;
+  margin: auto;
+  background: rgba(54, 25, 25, .04);
+  box-shadow: 0 0 10px 10px #888888;
+  margin-bottom: 10px;
 }
 
+#site-header #title {
+  text-shadow: 2px 2px #3385FF;
+}
+#main-content{
+  box-shadow: none;
+}
 #text-form {
   border-bottom: 1px solid black;
   padding-bottom: 20px;
@@ -30,19 +39,27 @@ body {
 }
 
 #site-header {
+  height: 100px;
+  width:  100%;
   border-color: black;
   border-style: solid;
-  border-width: 0px 1px 1px 1px;
-  height: 50px;
+  border-width: 0px 0px 1px 0px;
+  margin-top:  10px;
   margin-bottom: 20px;
-  padding: 20px;
+  margin-right: -100px;
+  padding-bottom: 10px;
+  padding-top:  10px;
+  font-size: 48px;
+  text-align: center;
 }
 
 #site-header nav .nav-links {
-  float: right;
+  font-size: 20px;
+  text-shadow: none;
   list-style-type: none;
+  float: right;
   margin: 0;
-  padding: 0;
+  padding: 0px 20px 0px 0px;
 }
 
 #text-form {
@@ -68,6 +85,7 @@ body {
 }
 
 .text-body {
+
   margin-bottom: 20px;
   margin-top: 10px;
   word-wrap: break-word;
@@ -92,6 +110,41 @@ body {
 
 
 
+.item-display {
+  margin:auto;
+  height: 400px;
+  width: 95%;
+  margin-left: -27px;
+  border: 3px solid;
+  margin-bottom: 20px;
+  padding: 30px;
+  
+  
+}
 
+.item-name {
+  text-align: center;
+  font-size: 28px;
+}
+.rating {
+  text-align: right;
+}
 
+.rating-button {
+  float: right;
+}
 
+.description {
+  text-align: center;
+  font-size: 20px;
+}
+
+#main-page-page #main-page-title {
+  text-align: center;
+  font-size: 32px;
+}
+
+#main-page-page #main-page-date {
+  text-align: center;
+  font-size: 28px;
+}

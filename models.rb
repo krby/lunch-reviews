@@ -40,7 +40,7 @@ class MenuItem
 	has n, :lunches, through: :lunch_menu_items
 	
 	def avg_rating
-	  self.reviews.avg(:rating)
+	  self.reviews.avg(:rating).round(2)
 	end
 end
 

@@ -102,15 +102,6 @@ post("/admin/add_menu_item") do
   end
 end
 
-post("/admin/delete_menu_item") do
-	delete_menu_id = params["delete_menu_item_ids"]
-	
-	p puts "#####################"
-	p puts delete_menu_id
-	
-	redirect("/admin/add_menu_items")
-end
-
 # delete menu item 
 post("/admin/delete_menu_item/:menu_item_id") do
   menu_item = MenuItem.get(params["menu_item_id"])

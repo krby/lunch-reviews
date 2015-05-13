@@ -1,28 +1,32 @@
 <article id="main-page">
   <a href = "/admin/add_menu_items">Admin</a>
-  <div id="page">
+  <div id="main-page-page">
     <% if lunch.menu_items.empty? %>
         <h2>Sorry, no menu items. :(</h2>
     <% else %>
-      <h1>Lunch of the Day</h1>
-      <%= lunch.date %>
-       <ul class="text-list">
+      <div id="main-page-title">Lunch of the Day</div>
+      <div id="main-page-date"><%= lunch.date %></div>
+       <ul class="text-list" style="list-style-type: none;">
         <% lunch.menu_items.each do |menu_item| %>
          <li>
-          <div class="item-name">
-          <%= menu_item.name %>
-          </div>
-          <div class ="rating">
-          Rating: <%= menu_item.avg_rating %>
-          </div>
-          <div class="text-body">
-          <%= menu_item.description %>
-          </div>
-          <div class="rating">
-            <form method="POST" action="/review/<%= menu_item.id %>">
-              <input type="number" name="lunch_rating" min="1" max="10">
-              <button type="submit">Submit Rating</button>
-            </form>
+          <div class="item-display">
+            <div class="item-name">
+            <%= menu_item.name %>
+            </div>
+            <div class ="rating">
+            <strong>Rating: </strong> <%= menu_item.avg_rating %>
+            </div>
+            <div class="text-body">
+              <div class="description"> <strong> Description </strong>
+              </div> <br>
+              <%= menu_item.description %>
+            </div>
+            <div class="rating-button">
+              <form method="POST" action="/review/<%= menu_item.id %>">
+                <input type="number" name="lunch_rating" min="1" max="10">
+                <button type="submit">Submit Rating</button>
+              </form>
+            </div>
           </div>
         </li>
        <% end %>
