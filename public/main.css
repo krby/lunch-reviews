@@ -111,11 +111,11 @@ body {
 
 
 .item-display {
-  margin:auto;
   height: 400px;
   width: 95%;
-  margin-left: -27px;
-  border: 3px solid;
+  margin-left: -4%;
+  margin-right: 5%;
+  border: 2px solid;
   margin-bottom: 20px;
   padding: 30px;
   
