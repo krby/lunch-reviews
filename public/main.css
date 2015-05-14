@@ -10,9 +10,9 @@ body {
   margin-bottom: 10px;
 }
 
-#site-header #title {
-  text-shadow: 2px 2px #3385FF;
-}
+/*#site-header #title {*/
+/*  text-shadow: 2px 2px #3385FF;*/
+/*}*/
 #main-content{
   box-shadow: none;
 }
@@ -112,8 +112,6 @@ body {
 .item-display {
   height: 400px;
   width: 95%;
-  margin-left: -4%;
-  margin-right: 5%;
   border: 2px solid;
   margin-bottom: 20px;
   padding: 30px;
@@ -146,4 +144,8 @@ body {
 #main-page-page #main-page-date {
   text-align: center;
   font-size: 28px;
+}
+
+.user-auth {
+  text-align: center;
 }
