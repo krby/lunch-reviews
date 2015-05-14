@@ -75,7 +75,6 @@ body {
   margin-top: 5px;
 }
 
-
 #text-form #description-body {
   height: 100px;
   width: 100%;
@@ -85,7 +84,6 @@ body {
 }
 
 .text-body {
-
   margin-bottom: 20px;
   margin-top: 10px;
   word-wrap: break-word;
@@ -110,6 +108,7 @@ body {
 
 
 
+/*new stuff*/
 .item-display {
   margin:auto;
   height: 400px;

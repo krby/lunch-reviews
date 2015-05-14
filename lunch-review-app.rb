@@ -110,6 +110,10 @@ post("/admin/delete_menu_item/:menu_item_id") do
   if menu_item.destroyed?
     redirect("/admin/add_menu_items")
   else
+    menu_item.errors.each do |error|
+      p #############
+      p error
+    end
 		erb(:error)
   end
 end
@@ -152,8 +156,8 @@ post("/review/:menu_item_id") do
 		redirect("/")
 	else
 		puts "something went horribly wrong"
-		review.errors.each do |e|
-			print e
+		review.errors.each do |error|
+			p error
 		end
 		erb(:error)
 	end

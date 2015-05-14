@@ -6,32 +6,33 @@
     <% else %>
       <div id="main-page-title">Lunch of the Day</div>
       <div id="main-page-date"><%= lunch.date %></div>
-       <ul class="text-list" style="list-style-type: none;">
+      <ul class="text-list" style="list-style-type: none;">
         <% lunch.menu_items.each do |menu_item| %>
-         <li>
-          <div class="item-display">
-            <div class="item-name">
-            <%= menu_item.name %>
+          <li>
+            <div class="item-display">
+              <div class="item-name">
+                <%= menu_item.name %>
+              </div>
+              <div class ="rating">
+                <strong>Rating: </strong> <%= menu_item.avg_rating %>
+              </div>
+              <div class="text-body">
+                <div class="description"> <strong> Description </strong></div>
+                <br>
+                <%= menu_item.description %>
+              </div>
+              <div class="rating-button">
+                <form method="POST" action="/review/<%= menu_item.id %>">
+                  <input type="number" name="lunch_rating" min="1" max="10">
+                  <button type="submit">Submit Rating</button>
+                </form>
+              </div>
             </div>
-            <div class ="rating">
-            <strong>Rating: </strong> <%= menu_item.avg_rating %>
-            </div>
-            <div class="text-body">
-              <div class="description"> <strong> Description </strong>
-              </div> <br>
-              <%= menu_item.description %>
-            </div>
-            <div class="rating-button">
-              <form method="POST" action="/review/<%= menu_item.id %>">
-                <input type="number" name="lunch_rating" min="1" max="10">
-                <button type="submit">Submit Rating</button>
-              </form>
-            </div>
-          </div>
-        </li>
+          </li>
        <% end %>
       </ul>
     <% end %>
+    
     <h3>Users</h3>
     <% if user_signed_in? %>
       <p>

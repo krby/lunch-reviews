@@ -4,37 +4,61 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>What's for Lunch?</title>
-    <link rel="stylesheet" type="text/css" href="/normalize.css">
+    <!--<link rel="stylesheet" type="text/css" href="/normalize.css">-->
     <link rel="stylesheet" type="text/css" href="/main.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   </head>
   <body>
     <div id="page">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid" style="background-color: beige;">
+          <!-- Make collapsable for better mobile ux -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">What's for Lunch?</a>
+          </div>
+          
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#">About</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                <li><a href="/sessions/sign_out">Sign Out</a></li>
+                <p class="navbar-text">Signed in as <%= current_user.email %></p>
+              <% else %>
+                <li><a href="/sessions/new">Sign In</a></li>
+                <li><a href="/users/new">Create Account</a></li>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      
       <header id="site-header">
         <a id = "title" href="/">What's for Lunch?</a>
-        <nav>
-          <ul class="nav-links">
-            <% if user_signed_in? %>
-              <li>
-                <a href="/sessions/sign_out">Sign Out</a>
-              </li>
-              <li>
-                Signed in as
-                <span class="user-email"><%= current_user.email %></span>
-              </li>
-            <% else %>
-              <li>
-                <a href="/sessions/new">Sign In</a>
-              </li>
-              <li>
-                <a href="/users/new">Create Account</a>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
       </header>
       <div id="main-content">
         <%= yield %>
       </div>
     </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>
 </html>
