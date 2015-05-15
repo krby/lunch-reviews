@@ -2,6 +2,9 @@ body {
   background-image: url("congruent_pentagon.png");
 }
 
+#description-body{
+  margin-top: 10px;
+}
 #page {
   width: 66%;
   margin: auto;
@@ -148,4 +151,11 @@ body {
 
 .user-auth {
   text-align: center;
+  font-size: 32px;
+}
+
+.add-menu-display {
+  margin: auto;
+  padding: 20px;
+  
 }

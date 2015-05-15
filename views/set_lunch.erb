@@ -1,13 +1,10 @@
 <article id="set-lunch">
-  <a href = "/" >Main Page</a>
   <a href = "/admin/add_menu_items">Add Menu Items</a>
   
-  <div id="set-lunch-page">
-    <h1>Lunch</h1>
-    <h2 style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
+  <div class="add-menu-display">
+    <h2 class="user-auth" style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
     
     <form method="POST" action="/admin/set_lunch">
-      <button type="submit">Set lunch</button>
       <br><br>
       Date: <input type="date" name="date" placeholder:"mm/dd/yy" required:"true">
       <% if menu_items.empty? %>
@@ -28,6 +25,7 @@
           <% end %>
         </ol>
       <% end %>
+      <button type="submit">Set lunch</button>
     </form>
   </div>
 </article>
