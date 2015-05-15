@@ -50,7 +50,8 @@ class Review
 	property :id,               Serial 
 	property :created_at,       DateTime, required: true
 	property :rating,           Integer, default: 0, required: true
-
+  property :comment,          Text
+	
 	belongs_to :menu_item
 end
 

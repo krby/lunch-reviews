@@ -141,17 +141,18 @@ end
 # Rate a MenuItem
 post("/review/:menu_item_id") do
   rating = params["lunch_rating"].to_i
-  review_time = DateTime.now
-  puts "=========="
-  puts rating
-  puts rating.class.name
+  comment = params["lunch_comment"]
+  puts "#################################"
+  puts "#################################"
+  puts comment
   
   review = Review.new(
+    comment:          comment,
   	rating: 					rating,
   	created_at: 			review_time
   )
   MenuItem.get(params["menu_item_id"]).reviews << review
-
+  
 	if review.save
 		redirect("/")
 	else
