@@ -36,7 +36,7 @@ class MenuItem
 	property :description,			Text, required: true
 	
 	has n, :reviews
-	has n, :lunch_menu_items
+	has n, :lunch_menu_items, constraint: :destroy
 	has n, :lunches, through: :lunch_menu_items
 	
 	def avg_rating
