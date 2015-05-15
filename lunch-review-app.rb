@@ -86,6 +86,7 @@ get("/admin/add_menu_items") do
 	erb(:add_menu_items, locals: { menu_items: list })
 end
 
+# Add menu item
 post("/admin/add_menu_item") do
   menu_item_name = params["name"]
   menu_item_desc = params["description"]
@@ -118,14 +119,14 @@ post("/admin/delete_menu_item/:menu_item_id") do
   end
 end
 
-# Set the lunch. Enter in what the lunch is. 
+# Set lunch page
 get("/admin/set_lunch") do
 	list = MenuItem.all(order: :name.asc)
 	erb(:set_lunch, locals: {menu_items: list})
 end
 
+# Set the lunch. Enter in what the lunch is. 
 post("/admin/set_lunch") do
-	
   lunch = Lunch.new(date: params["date"])
   
   #.add_menu_item_ids method is added in the Lunch class in models.rb
@@ -140,16 +141,16 @@ end
 
 # Rate a MenuItem
 post("/review/:menu_item_id") do
-  rating = params["lunch_rating"].to_i
-  comment = params["lunch_comment"]
+  rating = params["menu_item_rating"].to_i
+  body = params["menu_item_review_body"]
   puts "#################################"
   puts "#################################"
-  puts comment
+  puts body
   
   review = Review.new(
-    comment:          comment,
+    body:             body,
   	rating: 					rating,
-  	created_at: 			review_time
+  	created_at: 			DateTime.now
   )
   MenuItem.get(params["menu_item_id"]).reviews << review
   

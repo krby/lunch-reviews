@@ -1,7 +1,7 @@
 <article id="main-page">
   <div id="main-page-page">
     <% if lunch.menu_items.empty? %>
-        <h2>Sorry, no menu items. :(</h2>
+      <h2>Sorry, no menu items. :(</h2>
     <% else %>
       <div id="main-page-title">Lunch of the Day</div>
       <div id="main-page-date"><%= lunch.date %></div>
@@ -16,20 +16,32 @@
                 <strong>Rating: </strong> <%= menu_item.avg_rating %>
               </div>
               <div class="text-body">
-                <div class="description"> <strong> Description </strong></div>
+                <div class="description"><strong> Description </strong></div>
                 <br>
                 <%= menu_item.description %>
               </div>
+              <div class="body"><strong> Reviews </strong>
+                <br>
+                <% if menu_item.reviews.empty? %>
+                  <p>Sorry, no reviews</p>
+                <% else %>
+                  <% menu_item.reviews.each do |review| %>
+                    <!--<li class="review-body">-->
+                      <p><%= review.body %></p>
+                    <!--</li>-->
+                  <% end %>
+                <% end %>
+              </div>
               <div class="rating-button">
                 <form method="POST" action="/review/<%= menu_item.id %>">
-                  <input type="textarea" name= "lunch_comment">
-                  <input type="number" name="lunch_rating" min="1" max="10">
+                  <input type="textarea" name="menu_item_review_body">
+                  <input type="number" name="menu_item_rating" min="1" max="10">
                   <button type="submit">Submit Rating</button>
                 </form>
               </div>
             </div>
           </li>
-       <% end %>
+        <% end %>
       </ul>
     <% end %>
     
