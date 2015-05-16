@@ -131,7 +131,15 @@ body {
 }
 
 .rating-button {
-  float: right;
+  float: left;
+}
+
+.rating-button #review {
+  height: 50%;
+  width: 200%;
+  border-color: rgb(169, 169, 169);
+  border-style: solid;
+  border-width: 1px;
 }
 
 .description {
@@ -158,4 +166,16 @@ body {
   margin: auto;
   padding: 20px;
   
+}
+
+#user-email {
+  margin-bottom: 10px;
+}
+
+#user-password {
+  margin-bottom: 10px;
+}
+
+#user-password-confirm {
+  margin-bottom: 10px;
 }

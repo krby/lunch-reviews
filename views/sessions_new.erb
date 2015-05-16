@@ -11,19 +11,20 @@
       </ul
     </div>
   <% end %>
-
-  <form id="sign-in-form" class="horizontal-form"
-        method="POST" action="/sessions">
-
-    <label for="user-email">Email</label>
-
-    <input id="user-email" type="text" name="email"
-           placeholder="you@example.com" value="<%= user.email %>">
-
-    <label for="user-password">Password</label>
-
-    <input id="user-password" type="password" name="password">
-
-    <button type="submit">Sign In</button>
-  </form>
+  <div class="add-menu-display">
+    <form id="sign-in-form" class="horizontal-form"
+          method="POST" action="/sessions">
+  
+      <label for="user-email">Email</label>
+  
+      <input id="user-email" type="text" name="email"
+             placeholder="you@example.com" value="<%= user.email %>">
+  
+      <label for="user-password">Password</label>
+  
+      <input id="user-password" type="password" name="password">
+  
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
 </article>

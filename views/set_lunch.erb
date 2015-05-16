@@ -1,11 +1,8 @@
 <article id="set-lunch">
   <a href = "/admin/add_menu_items">Add Menu Items</a>
-  
+  <h2 class="user-auth" style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
   <div class="add-menu-display">
-    <h2 class="user-auth" style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
-    
     <form method="POST" action="/admin/set_lunch">
-      <br><br>
       Date: <input type="date" name="date" placeholder:"mm/dd/yy" required:"true">
       <% if menu_items.empty? %>
         <h2>Sorry, no menu items. :(</h2>

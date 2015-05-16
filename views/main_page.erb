@@ -7,6 +7,10 @@
       <div id="main-page-date"><%= lunch.date %></div>
       <ul class="text-list" style="list-style-type: none;">
         <% lunch.menu_items.each do |menu_item| %>
+          <% if menu_item.reviews.last.id > 2 do 
+          menu_item.reviews.delete(menu_item.reviews.last) 
+          end %>
+          
           <li>
             <div class="item-display">
               <div class="item-name">
@@ -34,9 +38,15 @@
               </div>
               <div class="rating-button">
                 <form method="POST" action="/review/<%= menu_item.id %>">
-                  <input type="textarea" name="menu_item_review_body">
-                  <input type="number" name="menu_item_rating" min="1" max="10">
-                  <button type="submit">Submit Rating</button>
+                  <label for="review">Review</label>
+                  
+                  <textarea id="review" type="textarea" name="menu_item_review_body"> </textarea>
+                  
+                  <label for="rating">Rating</label>
+                  
+                  <input id="rating" type="number" name="menu_item_rating" min="1" max="10">
+                  
+                  <button type="submit">Submit Review</button>
                 </form>
               </div>
             </div>
