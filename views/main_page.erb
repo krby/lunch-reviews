@@ -7,10 +7,7 @@
       <div id="main-page-date"><%= lunch.date %></div>
       <ul class="text-list" style="list-style-type: none;">
         <% lunch.menu_items.each do |menu_item| %>
-          <% if menu_item.reviews.last.id > 2 do 
-          menu_item.reviews.delete(menu_item.reviews.last) 
-          end %>
-          
+
           <li>
             <div class="item-display">
               <div class="item-name">
@@ -54,7 +51,6 @@
         <% end %>
       </ul>
     <% end %>
-    
     <h3>Users</h3>
     <% if user_signed_in? %>
       <p>

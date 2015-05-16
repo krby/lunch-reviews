@@ -34,6 +34,18 @@ set(:sessions, true)
 set(:session_secret, ENV["SESSION_SECRET"])
 
 get("/") do
+  # Lunch.last.menu_items.each do |menu_item|
+  #     if menu_item.reviews.empty?
+
+  #     else
+  #         if menu_item.reviews.count > 2
+  #         menu_item.reviews.first.destroy
+  #         else
+  #           print "##########################"
+  #         end
+  #     end
+  #   end
+  
 	users = User.all
   erb(:main_page, :locals => {:lunch => Lunch.last, :users => users})
 end
