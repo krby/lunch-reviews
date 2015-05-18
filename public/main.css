@@ -16,6 +16,7 @@ body {
 /*#site-header #title {*/
 /*  text-shadow: 2px 2px #3385FF;*/
 /*}*/
+
 #main-content{
   box-shadow: none;
 }
@@ -34,7 +35,6 @@ body {
 
 
 #text-form #description-body {
-  height: 100px;
   width: 100%;
   border-color: rgb(169, 169, 169);
   border-style: solid;
@@ -79,7 +79,6 @@ body {
 }
 
 #text-form #description-body {
-  height: 100px;
   width: 100%;
   border-color: rgb(169, 169, 169);
   border-style: solid;
@@ -113,12 +112,10 @@ body {
 
 /*new stuff*/
 .item-display {
-  height: 400px;
-  width: 95%;
+  width: 100%;
   border: 2px solid;
   margin-bottom: 20px;
   padding: 30px;
-  
   
 }
 
@@ -130,13 +127,12 @@ body {
   text-align: right;
 }
 
-.rating-button {
-  float: left;
-}
+/*.rating-button {*/
+/*  float: left;*/
+/*}*/
 
 .rating-button #review {
-  height: 50%;
-  width: 200%;
+  width: 100%;
   border-color: rgb(169, 169, 169);
   border-style: solid;
   border-width: 1px;

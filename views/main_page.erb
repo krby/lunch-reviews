@@ -21,18 +21,7 @@
                 <br>
                 <%= menu_item.description %>
               </div>
-              <div class="body"><strong> Reviews </strong>
-                <br>
-                <% if menu_item.reviews.empty? %>
-                  <p>Sorry, no reviews</p>
-                <% else %>
-                  <% menu_item.reviews.each do |review| %>
-                    <!--<li class="review-body">-->
-                      <p><%= review.body %></p>
-                    <!--</li>-->
-                  <% end %>
-                <% end %>
-              </div>
+              
               <div class="rating-button">
                 <form method="POST" action="/review/<%= menu_item.id %>">
                   <label for="review">Review</label>
@@ -46,6 +35,22 @@
                   <button type="submit">Submit Review</button>
                 </form>
               </div>
+              
+              <br>
+              
+              <div class="body"><strong> Reviews </strong>
+                <br>
+                <% if menu_item.reviews.empty? %>
+                  <p>Sorry, no reviews</p>
+                <% else %>
+                  <% menu_item.reviews.each do |review| %>
+                    <!--<li class="review-body">-->
+                      <p><%= review.body %></p>
+                    <!--</li>-->
+                  <% end %>
+                <% end %>
+              </div>
+              
             </div>
           </li>
         <% end %>
