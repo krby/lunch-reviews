@@ -1,6 +1,14 @@
 body {
   background-image: url("congruent_pentagon.png");
+  margin: 0;
+  padding: 0;
 }
+
+css menu, ol, ul, li { 
+  padding: 0; 
+  
+}
+
 
 #description-body{
   margin-top: 10px;
@@ -91,6 +99,12 @@ body {
   word-wrap: break-word;
 }
 
+.text-list {
+  padding-right: 4%;
+  padding-left: 4%;
+  
+}
+
 .text-list .text-timestamp {
   font-size: 12px;
   font-style: italic;
@@ -174,4 +188,8 @@ body {
 
 #user-password-confirm {
   margin-bottom: 10px;
+}
+
+#review {
+  height: 80px;
 }
