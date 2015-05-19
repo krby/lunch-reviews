@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>What's for Lunch?</title>
     <!--<link rel="stylesheet" type="text/css" href="/normalize.css">-->
     <link rel="stylesheet" type="text/css" href="/main.css">
@@ -36,11 +37,13 @@
             
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                <li><a href="/sessions/sign_out">Sign Out</a></li>
-                <p class="navbar-text">Signed in as <%= current_user.email %></p>
+                <li><a href="/sessions/sign_out"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+                <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> Signed in as <%= current_user.email %></p>
               <% else %>
-                <li><a href="/sessions/new">Sign In</a></li>
-                <li><a href="/users/new">Create Account</a></li>
+                <li><a href="/sessions/new"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <!--<li><a href="/sessions/new">Sign In</a></li>-->
+                <!--<li><a href="/users/new">Create Account</a></li>-->
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
