@@ -6,106 +6,117 @@ body {
 
 css menu, ol, ul, li { 
   padding: 0; 
-  
 }
 
 
-#description-body{
-  margin-top: 10px;
+/*layout.erb*/
+#main-content{
+  box-shadow: none;
+  padding: 20px;
 }
+
 #page {
-  width: 66%;
+  width: 70%;
   margin: auto;
   background: rgba(54, 25, 25, .04);
   box-shadow: 0 0 10px 10px #888888;
   margin-bottom: 10px;
 }
 
+/*  not in use  */
+/*#site-header {*/
+/*  height: 100px;*/
+/*  width:  100%;*/
+/*  border-color: black;*/
+/*  border-style: solid;*/
+/*  border-width: 0px 0px 1px 0px;*/
+/*  margin-top:  10px;*/
+/*  margin-bottom: 20px;*/
+/*  margin-right: -100px;*/
+/*  padding-bottom: 10px;*/
+/*  padding-top:  10px;*/
+/*  font-size: 48px;*/
+/*  text-align: center;*/
+/*}*/
+
 /*#site-header #title {*/
 /*  text-shadow: 2px 2px #3385FF;*/
 /*}*/
 
-#main-content{
-  box-shadow: none;
-}
-#text-form {
-  border-bottom: 1px solid black;
-  padding-bottom: 20px;
-}
-
-#text-form button[type="submit"] {
-  margin-top: 10px;
-}
-
-#text-form input[type="checkbox"] {
-  margin-top: 5px;
-}
+/*#site-header nav .nav-links {*/
+/*  font-size: 20px;*/
+/*  text-shadow: none;*/
+/*  list-style-type: none;*/
+/*  float: right;*/
+/*  margin: 0;*/
+/*  padding: 0px 20px 0px 0px;*/
+/*}*/
 
 
-#text-form #description-body {
-  width: 100%;
-  border-color: rgb(169, 169, 169);
-  border-style: solid;
-  border-width: 1px;
-}
-
-#site-header {
-  height: 100px;
-  width:  100%;
-  border-color: black;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  margin-top:  10px;
-  margin-bottom: 20px;
-  margin-right: -100px;
-  padding-bottom: 10px;
-  padding-top:  10px;
-  font-size: 48px;
+/*main_page.erb*/
+#main-page-title {
   text-align: center;
+  font-size: 32px;
 }
 
-#site-header nav .nav-links {
-  font-size: 20px;
-  text-shadow: none;
-  list-style-type: none;
-  float: right;
-  margin: 0;
-  padding: 0px 20px 0px 0px;
+#main-page-date {
+  text-align: center;
+  font-size: 28px;
 }
 
-#text-form {
+
+/*add_menu_items.erb*/
+
+
+
+
+
+
+
+
+
+/*text forms*/
+/*---------------------*/
+.text-form-div {
+  margin: auto;
+}
+
+.text-form {
   border-bottom: 1px solid black;
   padding-bottom: 20px;
 }
 
-#text-form button[type="submit"] {
-  margin-top: 10px;
-}
-
-#text-form input[type="checkbox"] {
+.text-form input[type="checkbox"] {
   margin-top: 5px;
 }
 
-#text-form #description-body {
+.text-form-body{
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
   border-color: rgb(169, 169, 169);
   border-style: solid;
   border-width: 1px;
 }
+/*---------------------*/
 
+
+
+/*text - bodies of text*/
 .text-body {
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   word-wrap: break-word;
 }
 
+/*padding for text items*/
 .text-list {
   padding-right: 4%;
   padding-left: 4%;
-  
 }
 
-.text-list .text-timestamp {
+/*displays info like timestamp - small text*/
+.text-info {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 10px;
@@ -113,83 +124,46 @@ css menu, ol, ul, li {
   text-align: right;
 }
 
-/*display menu item name*/
-.item-name { 
-  border-bottom: 1px solid rgb(128, 128, 128);
-  font-size: 20px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  text-align: left;
-}
 
 
 
-/*new stuff*/
+/*items (menu items) on main_page*/
+/*---------------------*/
+/*displays the item (menu item) in box */
 .item-display {
-  width: 100%;
   border: 2px solid;
-  margin-bottom: 20px;
   padding: 30px;
-  
 }
 
-.item-name {
-  text-align: center;
-  font-size: 28px;
+.item-underline {
+  border-bottom: 1px solid rgb(128, 128, 128);
 }
+
 .rating {
   text-align: right;
 }
+/*---------------------*/
 
-/*.rating-button {*/
-/*  float: left;*/
-/*}*/
 
-.rating-button #review {
+
+/*review form*/
+/*---------------------*/
+.review-form #review {
   width: 100%;
   border-color: rgb(169, 169, 169);
   border-style: solid;
   border-width: 1px;
 }
 
-.description {
-  text-align: center;
-  font-size: 20px;
-}
-
-#main-page-page #main-page-title {
-  text-align: center;
-  font-size: 32px;
-}
-
-#main-page-page #main-page-date {
-  text-align: center;
-  font-size: 28px;
-}
-
-.user-auth {
-  text-align: center;
-  font-size: 32px;
-}
-
-.add-menu-display {
-  margin: auto;
-  padding: 20px;
-  
-}
-
-#user-email {
-  margin-bottom: 10px;
-}
-
-#user-password {
-  margin-bottom: 10px;
-}
-
-#user-password-confirm {
-  margin-bottom: 10px;
-}
-
 #review {
   height: 80px;
+}
+/*---------------------*/
+
+
+
+#user-email, 
+#user-password, 
+#user-password-confirm {
+  margin-bottom: 10px;
 }

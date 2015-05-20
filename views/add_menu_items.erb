@@ -1,35 +1,34 @@
 <article id="add-menu-items">
   <a href = "/admin/set_lunch" >Add Lunch</a>
   <div id="add-menu-items-page">
-    <h2 class="user-auth">Add Menu Items</h2>
-    <div class="add-menu-display">
-      <form id="text-form" method="POST" action="/admin/add_menu_item">
+    <h2 class="text-center">Add Menu Items</h2>
+    <div class="text-form-div">
+      <form class="text-form" method="POST" action="/admin/add_menu_item">
         <input type="text" name="name" placeholder="Name of Menu Item"></input>
-        <textarea id="description-body" name="description" placeholder="Description of Menu Item"></textarea>
+        <textarea class="text-form-body" name="description" placeholder="Description of Menu Item"></textarea>
         <br>
         <button type="submit">Add item</button>
       </form>
-    
-    <% if menu_items.empty? %>
-      <h2>Sorry, no menu items. :(</h2>
-    <% else %>
-      <h1 class="user-auth">Menu Items List and Deletion</h2>
-      <ol class="text-list">
-        <% menu_items.each do |menu_item| %>
-          <li>
-            <div class="item-name">
-                <%= menu_item.name %>
-            </div>
-            <div class="text-body">
-              <%= menu_item.description %>
-            </div>
-            <form method="POST" action="/admin/delete_menu_item/<%= menu_item.id %>">
-              <button type ="submit">Delete Menu Item</button>
-            </form>
-          </li>
-        <% end %>
-      </ol>
-    <% end %>
+      <% if menu_items.empty? %>
+        <h2>Sorry, no menu items. :(</h2>
+      <% else %>
+        <h1 class="text-center">Menu Items List and Deletion</h2>
+        <ol class="text-list">
+          <% menu_items.each do |menu_item| %>
+            <li>
+              <div class="text-left">
+                  <h3 class="item-underline"><%= menu_item.name %></h3>
+              </div>
+              <div class="text-body">
+                <%= menu_item.description %>
+              </div>
+              <form method="POST" action="/admin/delete_menu_item/<%= menu_item.id %>">
+                <button type ="submit">Delete Menu Item</button>
+              </form>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
     </div>
   </div>
 </article>
