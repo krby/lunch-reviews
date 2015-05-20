@@ -33,13 +33,21 @@
             <div class="text-body">
               <strong> Reviews </strong>
               <br>
-              <% if menu_item.reviews.empty? %>
-                <p>Sorry, no reviews</p>
-              <% else %>
-                <% menu_item.reviews.each do |review| %>
-                  <!--<li class="review-body">-->
-                    <p><%= review.body %></p>
-                  <!--</li>-->
+
+                <% if menu_item.reviews.empty? %>
+                  <p>Sorry, no reviews</p>
+                <% else %>
+                  <% menu_item.reviews.each do |review| %>
+                    <!--<li class="review-body">-->
+                    <div class="reviews-display">
+                      <div class="review-content">
+                        <%= review.body %>
+                      </div>
+                      <div class="time-tag">
+                      Posted on <%= review.created_at.strftime("%B %d, %Y at %l:%M%p") %>
+                      </div>
+                    </div>
+                    <!--</li>-->
                 <% end %>
               <% end %>
             </div>
