@@ -1,6 +1,6 @@
 <article id="set-lunch">
   <a href = "/admin/add_menu_items">Add Menu Items</a>
-  <h2 class="user-auth" style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
+  <h2 class="text-center" style="border-bottom: 1px solid black;">Tell me, what's for lunch?</h2>
   <div class="add-menu-display">
     <form method="POST" action="/admin/set_lunch">
       Date: <input type="date" name="date" placeholder:"mm/dd/yy" required:"true">
@@ -11,9 +11,12 @@
         <ol class="text-list">
           <% menu_items.each do |menu_item| %>
             <li>
-              <div class="item-name">
-                  <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
-                  <%= menu_item.name %>
+              <div class="text-left">
+                  <h3 class="item-underline">
+                    <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
+                    <%= menu_item.name %>
+                  </h3>
+                  
               </div>
               <div class="text-body">
                 <%= menu_item.description %>

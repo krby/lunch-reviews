@@ -1,85 +1,77 @@
 <article id="main-page">
-  <div id="main-page-page">
-    <% if lunch.menu_items.empty? %>
-      <h2>Sorry, no menu items. :(</h2>
-    <% else %>
-      <div id="main-page-title">Lunch of the Day</div>
-      <div id="main-page-date"><%= lunch.date %></div>
-      <ul class="text-list" style="list-style-type: none;">
-        <% lunch.menu_items.each do |menu_item| %>
-
-          <li>
-            <div class="item-display">
-              <div class="item-name">
-                <%= menu_item.name %>
-              </div>
-              <div class ="rating">
-                <strong>Rating: </strong> <%= menu_item.avg_rating %>
-              </div>
-              <div class="text-body">
-                <div class="description"><strong> Description </strong></div>
-                <br>
-                <%= menu_item.description %>
-              </div>
-              
-              <div class="rating-button">
-                <form method="POST" action="/review/<%= menu_item.id %>">
-                  <label for="review">Review</label>
-                  
-                  <textarea id="review" type="textarea" name="menu_item_review_body"> </textarea>
-                  
-                  <label for="rating">Rating</label>
-                  
-                  <input id="rating" type="number" name="menu_item_rating" min="1" max="10">
-                  
-                  <button type="submit">Submit Review</button>
-                </form>
-              </div>
-              
-              <br>
-              
-              <div class="body"><strong> Reviews </strong>
-                <br>
-                <% if menu_item.reviews.empty? %>
-                  <p>Sorry, no reviews</p>
-                <% else %>
-                  <% menu_item.reviews.each do |review| %>
-                    <!--<li class="review-body">-->
-                      <p><%= review.body %></p>
-                    <!--</li>-->
-                  <% end %>
-                <% end %>
-              </div>
-              
+  <% if lunch.menu_items.empty? %>
+    <h2>Sorry, no menu items. :(</h2>
+  <% else %>
+    <div id="main-page-title">Lunch of the Day</div>
+    <div id="main-page-date"><%= lunch.date %></div>
+    <ul class="text-list" style="list-style-type: none;">
+      <% lunch.menu_items.each do |menu_item| %>
+        <li>
+          <div class="item-display">
+            <div class="text-center">
+              <h2 class="item-underline"><%= menu_item.name %></h2>
             </div>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-    <h3>Users</h3>
-    <% if user_signed_in? %>
-      <p>
-        It looks like you're signed in. Congrats! You can
-        <a href="/sessions/sign_out">sign out</a> at any time.
-      </p>
-    <% else %>
-       <p>
-        It doesn't look like you're signed in.  You should
-         <a href="/users/new">create an account</a> or
-        <a href="/sessions/new">sign into your existing account</a>.
-      </p>
-    <% end %>
-    <% if users.empty? %>
-      <p>
-        Nobody's signed up yet!  Why don't you
-        <a href="/users/new">create an account</a>?
-      </p>
-    <% else %>
-      <ul>
-        <% users.each do |user| %>
-        <li><%= user.email %></li>
-       <% end %>
-      </ul>
-    <% end %>
-  </div>
+            <div class ="rating">
+              <strong>Rating: </strong> <%= menu_item.avg_rating %>
+            </div>
+            <div class="text-body">
+              <h4 class="text-center">Description</h4>
+              <br>
+              <%= menu_item.description %>
+            </div>
+            
+            <div class="text-form-div">
+              <form class="text-form" method="POST" action="/review/<%= menu_item.id %>">
+                <label for="review">Review</label>
+                <textarea class="text-form-body" id="review" type="textarea" name="menu_item_review_body"></textarea>
+                <label for="rating">Rating</label>
+                <input id="rating" type="number" name="menu_item_rating" min="1" max="10">
+                <button type="submit">Submit Review</button>
+              </form>
+            </div>
+            
+            <div class="text-body">
+              <strong> Reviews </strong>
+              <br>
+              <% if menu_item.reviews.empty? %>
+                <p>Sorry, no reviews</p>
+              <% else %>
+                <% menu_item.reviews.each do |review| %>
+                  <!--<li class="review-body">-->
+                    <p><%= review.body %></p>
+                  <!--</li>-->
+                <% end %>
+              <% end %>
+            </div>
+            
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <h3>Users</h3>
+  <% if user_signed_in? %>
+    <p>
+      It looks like you're signed in. Congrats! You can
+      <a href="/sessions/sign_out">sign out</a> at any time.
+    </p>
+  <% else %>
+     <p>
+      It doesn't look like you're signed in.  You should
+       <a href="/users/new">create an account</a> or
+      <a href="/sessions/new">sign into your existing account</a>.
+    </p>
+  <% end %>
+  <% if users.empty? %>
+    <p>
+      Nobody's signed up yet!  Why don't you
+      <a href="/users/new">create an account</a>?
+    </p>
+  <% else %>
+    <ul class="text-list">
+      <% users.each do |user| %>
+      <li><%= user.email %></li>
+     <% end %>
+    </ul>
+  <% end %>
 </article>
