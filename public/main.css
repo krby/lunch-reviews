@@ -11,7 +11,7 @@ css menu, ol, ul, li {
 
 /*layout.erb*/
 /*---------------------*/
-#main-content{
+#main-content {
   box-shadow: none;
   padding: 20px;
 }
@@ -97,7 +97,7 @@ css menu, ol, ul, li {
   margin-top: 5px;
 }
 
-.text-form-body{
+.text-form-body {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;

@@ -19,7 +19,6 @@
             </div>
             <div class="text-body">
               <h4 class="text-center">Description</h4>
-              <br>
               <%= menu_item.description %>
             </div>
             
@@ -70,14 +69,14 @@
     </p>
   <% else %>
      <p>
-      It doesn't look like you're signed in.  You should
-       <a href="/users/new">create an account</a> or
+      It doesn't look like you're signed in. You should
+      <a href="/users/new">create an account</a> or
       <a href="/sessions/new">sign into your existing account</a>.
     </p>
   <% end %>
   <% if users.empty? %>
     <p>
-      Nobody's signed up yet!  Why don't you
+      Nobody's signed up yet! Why don't you
       <a href="/users/new">create an account</a>?
     </p>
   <% else %>

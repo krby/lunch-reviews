@@ -8,13 +8,13 @@ class Lunch
 	has n, :lunch_menu_items
 	has n, :menu_items, through: :lunch_menu_items
 	
-  def add_menu_item_ids(menu_item_ids)
-    if menu_item_ids
-      menu_item_ids.each do |menu_item_id|
-        self.menu_items << MenuItem.get(menu_item_id)
-      end
-    end
-  end
+	def add_menu_item_ids(menu_item_ids)
+		if menu_item_ids
+			menu_item_ids.each do |menu_item_id|
+				self.menu_items << MenuItem.get(menu_item_id)
+			end
+		end
+	end
 end
 
 # Pairs lunch (date specific) and menu items
@@ -40,7 +40,7 @@ class MenuItem
 	has n, :lunches, through: :lunch_menu_items
 	
 	def avg_rating
-	  self.reviews.avg(:rating).round(2)
+		self.reviews.avg(:rating).round(2)
 	end
 end
 
@@ -50,7 +50,7 @@ class Review
 	property :id,               Serial 
 	property :created_at,       DateTime, required: true
 	property :rating,           Integer, default: 0, required: true
-  property :body,             Text,  :lazy => true
+	property :body,             Text,  :lazy => true
 	
 	belongs_to :menu_item
 end
@@ -60,28 +60,28 @@ class User
 	
 	property :id,           Serial
 
-  property :email, String,
-    :format   => :email_address,
-    :required => true,
-    :unique   => true,
-    :messages => {
-      :format => "You must enter a valid email address."
-    }
-  property :password, BCryptHash, :required => true
-  validates_confirmation_of :password
-  
-  attr_accessor :password_confirmation
-  validates_length_of :password_confirmation, :min => 6
-  
-  
-  def valid_password?(unhashed_password)
-    self.password == unhashed_password
-  end
-  
-  def self.find_by_email(email)
-    self.first(:email => email)
-  end
-  
+	property :email, String,
+		:format   => :email_address,
+		:required => true,
+		:unique   => true,
+		:messages => {
+			:format => "You must enter a valid email address."
+		}
+	property :password, BCryptHash, :required => true
+	validates_confirmation_of :password
+	
+	attr_accessor :password_confirmation
+	validates_length_of :password_confirmation, :min => 6
+	
+	
+	def valid_password?(unhashed_password)
+		self.password == unhashed_password
+	end
+	
+	def self.find_by_email(email)
+		self.first(:email => email)
+	end
+	
 end
 
 DataMapper.finalize
