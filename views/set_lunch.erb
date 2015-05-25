@@ -8,15 +8,15 @@
         <h2>Sorry, no menu items. :(</h2>
       <% else %>
         <h2>Menu Items</h2>
+        
         <ol class="text-list">
           <% menu_items.each do |menu_item| %>
             <li>
               <div class="text-left">
-                  <h3 class="item-underline">
-                    <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
-                    <%= menu_item.name %>
-                  </h3>
-                  
+                <h3 class="item-underline">
+                  <input type="checkbox" name="menu_item_ids[]" value="<%= menu_item.id %>">
+                  <%= menu_item.name %>
+                </h3>
               </div>
               <div class="text-body">
                 <%= menu_item.description %>
@@ -24,6 +24,7 @@
             </li>
           <% end %>
         </ol>
+        
       <% end %>
       <button type="submit">Set lunch</button>
     </form>

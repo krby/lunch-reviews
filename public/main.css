@@ -10,7 +10,8 @@ css menu, ol, ul, li {
 
 
 /*layout.erb*/
-#main-content{
+/*---------------------*/
+#main-content {
   box-shadow: none;
   padding: 20px;
 }
@@ -51,9 +52,11 @@ css menu, ol, ul, li {
 /*  margin: 0;*/
 /*  padding: 0px 20px 0px 0px;*/
 /*}*/
+/*---------------------*/
 
 
 /*main_page.erb*/
+/*---------------------*/
 #main-page-title {
   text-align: center;
   font-size: 32px;
@@ -63,9 +66,13 @@ css menu, ol, ul, li {
   text-align: center;
   font-size: 28px;
 }
+/*---------------------*/
 
 
 /*add_menu_items.erb*/
+/*---------------------*/
+
+/*---------------------*/
 
 
 
@@ -90,7 +97,7 @@ css menu, ol, ul, li {
   margin-top: 5px;
 }
 
-.text-form-body{
+.text-form-body {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
@@ -102,6 +109,8 @@ css menu, ol, ul, li {
 
 
 
+
+
 /*text - bodies of text*/
 .text-body {
   margin-bottom: 15px;
@@ -109,10 +118,10 @@ css menu, ol, ul, li {
   word-wrap: break-word;
 }
 
-/*padding for text items*/
+/*padding for text list items*/
 .text-list {
-  padding-right: 4%;
-  padding-left: 4%;
+  padding-right: 25px; 
+  padding-left: 25px;
 }
 
 /*displays info like timestamp - small text*/
@@ -136,7 +145,7 @@ css menu, ol, ul, li {
 }
 
 .item-underline {
-  border-bottom: 1px solid rgb(128, 128, 128);
+  border-bottom: 1px solid rgb(169, 169, 169);
 }
 
 .rating {
@@ -158,23 +167,24 @@ css menu, ol, ul, li {
 #review {
   height: 80px;
 }
-
-.time-tag {
-  float: right;
-  font-size: 8px;
-  font-style: italic;
-}
-
-.review-content {
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.reviews-display {
-  border-width: 1px;
-}
 /*---------------------*/
 
+
+/*comments section*/
+/*---------------------*/
+.comment-section {
+  list-style-type: none;
+  margin-bottom: 15px;
+  margin-top: 45px;
+  word-wrap: break-word;
+}
+
+.comment-section .avatar {
+  display: block;
+  float: left; 
+  margin-right: 12px;
+}
+/*---------------------*/
 
 
 #user-email, 
