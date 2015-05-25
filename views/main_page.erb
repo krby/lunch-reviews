@@ -2,8 +2,11 @@
   <% if lunch.menu_items.empty? %>
     <h2>Sorry, no menu items. :(</h2>
   <% else %>
-    <div id="main-page-title">Lunch of the Day</div>
-    <div id="main-page-date"><%= lunch.date %></div>
+    <h1 class="text-center">
+      Lunch of the Day
+      <br>
+      <%= lunch.date %>
+    </h1>
     <ul style="list-style-type: none;">
       <% lunch.menu_items.each do |menu_item| %>
         <li>
@@ -30,15 +33,17 @@
               </form>
             </div>
             
-            <div class="text-body">
-              <h3>Reviews</h3>
-              <br>
+            <div class="comment-section">
+              <h4>Reviews</h4>
               <% if menu_item.reviews.empty? %>
                 <p>Sorry, no reviews</p>
               <% else %>
                 <ul class="list-group">
                   <% menu_item.reviews.each do |review| %>
                     <li class="list-group-item" style="border: 1px solid black; background: none;">
+                      <div class="avatar">
+                        <img src="https://www.bcisiveonline.com/Content/images/gravatar_empty_50.png"> 
+                      </div>
                       <div class="text-body">
                         <%= review.body %>
                       </div>
