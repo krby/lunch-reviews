@@ -179,7 +179,7 @@ css menu, ol, ul, li {
   word-wrap: break-word;
 }
 
-.avatar {
+.comment-section .avatar {
   display: block;
   float: left; 
   margin-right: 12px;
