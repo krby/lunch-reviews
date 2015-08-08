@@ -1,3 +1,3 @@
-require './Lowell_Lunch_Review'
+require './lowell-review-app'
 
 run Sinatra::Application

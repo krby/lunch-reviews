@@ -2,6 +2,7 @@ require "sinatra"
 require "data_mapper"
 
 require "./environment"
+require"./seed"
 
 helpers do
   def current_user

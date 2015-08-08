@@ -46,7 +46,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <li><a href="/sessions/sign_out"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
-                <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> Signed in as <%= current_user.email %></p>
+                <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> Signed in as <%= current_user.name %></p>
               <% else %>
                 <li><a href="/sessions/new"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
